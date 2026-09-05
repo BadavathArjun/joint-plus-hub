@@ -1,8 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, CalendarDays, CheckCircle2, Stethoscope } from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
+import { CheckCircle2, Stethoscope } from "lucide-react";
 import { PageBanner } from "@/components/page-banner";
 import { SectionHeading } from "@/components/section-heading";
-import { Button } from "@/components/ui/button";
 import { services } from "@/lib/site-data";
 import { CareProcess, FinalCTA } from "@/components/content-sections";
 
@@ -175,15 +174,6 @@ function ServicesPage() {
                         {detail.candidates}
                       </div>
                     ) : null}
-                  </div>
-
-                  <div className="mt-8 pt-4">
-                    <Button asChild className="w-full font-bold">
-                      <Link to="/contact" hash="consultation">
-                        <CalendarDays className="mr-2 size-4" />
-                        Inquire About This Service
-                      </Link>
-                    </Button>
                   </div>
                 </article>
               );
