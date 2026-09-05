@@ -1,24 +1,87 @@
 import { createFileRoute } from "@tanstack/react-router";
+import {
+  Hero,
+  TrustBar,
+  ExpertiseSection,
+  ServicesSection,
+  RheumatologySection,
+  CareProcess,
+  GallerySection,
+  HealthTipsSection,
+  WhyChoose,
+  LocationsSection,
+  AppointmentSection,
+  ContactCards,
+  FinalCTA,
+} from "@/components/content-sections";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      {
+        title: "Dr. K. Prashanth Kumar | Orthopedic & Joint Replacement Surgeon",
+      },
+      {
+        name: "description",
+        content:
+          "Official website of Dr. K. Prashanth Kumar (MBBS, D.Ortho, DNB Ortho). 10+ years of experienced orthopedic & joint replacement surgery in Nirmal and Khanapur, Telangana.",
+      },
+      {
+        property: "og:title",
+        content: "Dr. K. Prashanth Kumar | Orthopedic & Joint Replacement Surgeon",
+      },
+      {
+        property: "og:description",
+        content:
+          "Comprehensive orthopedic care for joint replacement, fractures, sports injuries, arthritis, and trauma.",
+      },
+      { property: "og:type", content: "website" },
+    ],
+  }),
+  component: IndexPage,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function IndexPage() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      {/* 1. Doctor Introduction */}
+      <Hero />
+
+      {/* 2. Trust Indicators */}
+      <TrustBar />
+
+      {/* 3. Areas of Expertise */}
+      <ExpertiseSection />
+
+      {/* 4. Orthopedic Services */}
+      <ServicesSection />
+
+      {/* 5. Rheumatology & Arthritis Care */}
+      <RheumatologySection />
+
+      {/* 6. Care Process */}
+      <CareProcess />
+
+      {/* 7. Surgical and Clinical Care Gallery */}
+      <GallerySection />
+
+      {/* 8. Patient Education / Health Tips */}
+      <HealthTipsSection limit={3} />
+
+      {/* 9. Trust / Why Patients Choose */}
+      <WhyChoose />
+
+      {/* 10. Consultation Locations */}
+      <LocationsSection />
+
+      {/* 11. Consultation Request Form */}
+      <AppointmentSection />
+
+      {/* 12. Contact Details */}
+      <ContactCards />
+
+      {/* 13. Final Call to Action */}
+      <FinalCTA />
+    </>
   );
 }
