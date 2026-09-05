@@ -14,7 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      consultation_requests: {
+        Row: {
+          concern: string
+          consent_given: boolean
+          created_at: string
+          full_name: string
+          id: string
+          mobile_number: string
+          preferred_date: string
+          preferred_location: string
+          updated_at: string
+        }
+        Insert: {
+          concern: string
+          consent_given: boolean
+          created_at?: string
+          full_name: string
+          id?: string
+          mobile_number: string
+          preferred_date: string
+          preferred_location: string
+          updated_at?: string
+        }
+        Update: {
+          concern?: string
+          consent_given?: boolean
+          created_at?: string
+          full_name?: string
+          id?: string
+          mobile_number?: string
+          preferred_date?: string
+          preferred_location?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
