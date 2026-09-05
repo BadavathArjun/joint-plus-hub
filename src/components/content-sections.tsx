@@ -12,7 +12,7 @@ import {
   Award,
   Sparkles,
 } from "lucide-react";
-import doctorAsset from "@/assets/dr-prashanth-kumar.png.asset.json";
+import doctorPortrait from "@/assets/dr-prashanth-kumar.png";
 import xrayImage from "@/assets/orthopedic-xray.jpg";
 import rehabImage from "@/assets/rehabilitation-care.jpg";
 import deskImage from "@/assets/joint-care-desk.jpg";
@@ -23,7 +23,7 @@ import { GalleryLightbox, type GalleryItem } from "@/components/gallery-lightbox
 import { articles, expertise, locations, services } from "@/lib/site-data";
 
 export const images = {
-  doctor: doctorAsset.url,
+  doctor: doctorPortrait,
   xray: xrayImage,
   rehab: rehabImage,
   desk: deskImage,
@@ -125,7 +125,7 @@ export function Hero() {
           {/* Portrait frame */}
           <div className="relative z-10 w-full max-w-[460px] overflow-hidden rounded-2xl border-2 border-border/80 bg-secondary shadow-2xl">
             <img
-              src={doctorAsset.url}
+              src={doctorPortrait}
               width="768"
               height="768"
               alt="Dr. K. Prashanth Kumar, Orthopedic and Joint Replacement Surgeon"
@@ -173,7 +173,7 @@ export function AboutSection({ compact = false }: { compact?: boolean }) {
         <div className="relative">
           <div className="overflow-hidden rounded-2xl border border-border bg-secondary shadow-premium">
             <img
-              src={doctorAsset.url}
+              src={doctorPortrait}
               loading="lazy"
               width="768"
               height="768"

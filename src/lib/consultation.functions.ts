@@ -11,7 +11,7 @@ const consultationSchema = z.object({
 });
 
 export const submitConsultation = createServerFn({ method: "POST" })
-  .inputValidator((input) => consultationSchema.parse(input))
+  .validator((input) => consultationSchema.parse(input))
   .handler(async ({ data }) => {
     const requestedDate = new Date(`${data.preferredDate}T00:00:00Z`);
     const today = new Date();

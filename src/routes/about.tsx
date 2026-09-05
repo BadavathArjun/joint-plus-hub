@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, CalendarDays, CheckCircle2, ShieldCheck, Stethoscope } from "lucide-react";
-import doctorAsset from "@/assets/dr-prashanth-kumar.png.asset.json";
+import doctorPortrait from "@/assets/dr-prashanth-kumar.png";
 import { PageBanner } from "@/components/page-banner";
 import { SectionHeading } from "@/components/section-heading";
 import { Button } from "@/components/ui/button";
@@ -45,7 +45,7 @@ function AboutPage() {
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border border-border bg-secondary shadow-premium">
               <img
-                src={doctorAsset.url}
+                src={doctorPortrait}
                 alt="Dr. K. Prashanth Kumar, Orthopedic and Joint Replacement Surgeon"
                 width="768"
                 height="768"
