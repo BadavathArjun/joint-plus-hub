@@ -11,6 +11,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { ThemeToggle, ThemeSegmentedControl } from "@/components/theme-toggle";
 import { navItems, services } from "@/lib/site-data";
 
 export function SiteHeader() {
@@ -52,8 +53,9 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        {/* Desktop CTA Button */}
-        <div className="hidden lg:block">
+        {/* Desktop CTA Button & Theme Toggle */}
+        <div className="hidden items-center gap-3 lg:flex">
+          <ThemeToggle />
           <Button asChild size="default" className="min-h-11 px-5 font-bold shadow-sm">
             <Link to="/contact" hash="consultation">
               <CalendarDays className="mr-2 size-4" />
@@ -62,8 +64,9 @@ export function SiteHeader() {
           </Button>
         </div>
 
-        {/* Mobile Navigation Drawer Trigger */}
+        {/* Mobile Navigation Drawer Trigger & Theme Toggle */}
         <div className="flex items-center gap-2 lg:hidden">
+          <ThemeToggle className="size-10" />
           <Button asChild size="sm" variant="default" className="h-10 px-3 text-xs font-bold">
             <Link to="/contact" hash="consultation">
               Book
@@ -81,32 +84,41 @@ export function SiteHeader() {
                 <Menu className="size-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[85vw] max-w-sm p-6">
-              <SheetHeader className="text-left">
-                <SheetTitle className="text-lg font-bold text-foreground">
-                  Dr. K. Prashanth Kumar
-                </SheetTitle>
-                <SheetDescription className="text-xs text-muted-foreground">
-                  MBBS, D.Ortho, DNB Ortho • Orthopedic Surgeon
-                </SheetDescription>
-              </SheetHeader>
+            <SheetContent side="right" className="w-[85vw] max-w-sm p-6 flex flex-col justify-between overflow-y-auto">
+              <div>
+                <SheetHeader className="text-left">
+                  <SheetTitle className="text-lg font-bold text-foreground">
+                    Dr. K. Prashanth Kumar
+                  </SheetTitle>
+                  <SheetDescription className="text-xs text-muted-foreground">
+                    MBBS, D.Ortho, DNB Ortho • Orthopedic Surgeon
+                  </SheetDescription>
+                </SheetHeader>
 
-              <nav className="mt-8 flex flex-col space-y-1" aria-label="Mobile navigation">
-                {navItems.map(([label, href]) => (
-                  <SheetClose asChild key={href}>
-                    <Link
-                      to={href}
-                      onClick={() => setOpen(false)}
-                      className="flex min-h-12 items-center rounded-lg px-3 text-base font-semibold text-foreground transition hover:bg-muted"
-                      activeProps={{ className: "bg-accent-soft text-accent font-bold" }}
-                    >
-                      {label}
-                    </Link>
-                  </SheetClose>
-                ))}
-              </nav>
+                <nav className="mt-8 flex flex-col space-y-1" aria-label="Mobile navigation">
+                  {navItems.map(([label, href]) => (
+                    <SheetClose asChild key={href}>
+                      <Link
+                        to={href}
+                        onClick={() => setOpen(false)}
+                        className="flex min-h-12 items-center rounded-lg px-3 text-base font-semibold text-foreground transition hover:bg-muted"
+                        activeProps={{ className: "bg-accent-soft text-accent font-bold" }}
+                      >
+                        {label}
+                      </Link>
+                    </SheetClose>
+                  ))}
+                </nav>
+              </div>
 
               <div className="mt-8 pt-6 border-t border-border space-y-4">
+                <div>
+                  <span className="block text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
+                    Appearance
+                  </span>
+                  <ThemeSegmentedControl />
+                </div>
+
                 <SheetClose asChild>
                   <Button asChild className="min-h-12 w-full text-base font-bold shadow-sm">
                     <Link to="/contact" hash="consultation" onClick={() => setOpen(false)}>

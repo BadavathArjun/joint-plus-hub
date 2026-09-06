@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader, SiteFooter, MobileConsultationBar } from "@/components/site-shell";
+import { ThemeProvider } from "@/components/theme-provider";
 
 function NotFoundComponent() {
   return (
@@ -159,24 +160,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var k='joint-plus-theme';var s=localStorage.getItem(k);var d=s==='dark'||(!s&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}}catch(e){}})();`,
+          }}
+        />
       </head>
-      <body className="min-h-screen bg-background text-foreground flex flex-col font-sans">
-        {/* Skip to Content for Keyboard/Screen-reader accessibility */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground focus:shadow-lg focus:outline-none"
-        >
-          Skip to main content
-        </a>
-        <SiteHeader />
-        <main id="main-content" className="flex-1 pb-16 lg:pb-0">
-          {children}
-        </main>
-        <MobileConsultationBar />
-        <SiteFooter />
+      <body className="min-h-screen bg-background text-foreground flex flex-col font-sans transition-colors duration-200">
+        <ThemeProvider>
+          {/* Skip to Content for Keyboard/Screen-reader accessibility */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground focus:shadow-lg focus:outline-none"
+          >
+            Skip to main content
+          </a>
+          <SiteHeader />
+          <main id="main-content" className="flex-1 pb-16 lg:pb-0">
+            {children}
+          </main>
+          <MobileConsultationBar />
+          <SiteFooter />
+        </ThemeProvider>
         <Scripts />
       </body>
     </html>
